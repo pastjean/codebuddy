@@ -11,7 +11,7 @@ script:
 
 after_success:
   # If release then crosscompile
-  - if [ -n "$TRAVIS_TAG" ]; go get github.com/mitchellh/gox; gox -os="linux darwin windows"  -arch="amd64" ./cmd/buddy; else echo "Skipping release build..."; fi
+  - if [ -n "$TRAVIS_TAG" ]; then go get github.com/mitchellh/gox; gox -os="linux darwin windows"  -arch="amd64" ./cmd/buddy; else echo "Skipping release build..."; fi
 deploy:
   provider: releases
   api_key:
@@ -22,4 +22,5 @@ deploy:
     - "buddy_windows_amd64.exe"
   skip_cleanup: true
   on:
+    tags: true
     repo: pastjean/codebuddy
