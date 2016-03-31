@@ -2,8 +2,8 @@ package pairs
 
 import "math/rand"
 
-// GeneratePairs takes a src array and returns an array of pairs
-// If the number of elements in the src array is not even one pair is gonna
+// GeneratePairs takes a src array and returns an array of pairs.
+// If the number of elements in the src array is not even the last pair is gonna
 // have an additional element
 func GeneratePairs(src []string) [][]string {
 	pairs := make([][]string, len(src)/2)
@@ -19,7 +19,9 @@ func GeneratePairs(src []string) [][]string {
 	return pairs
 }
 
-// Shuffle an array with a seed
+// Shuffle shuffles an array.
+// It takes the src array and an integer to initialize a randomized source seed.
+// The seed can be something like `time.Now().UnixNano()`
 func Shuffle(src []string, seed int64) []string {
 	r := rand.New(rand.NewSource(seed))
 
