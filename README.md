@@ -13,7 +13,7 @@
 3. Execute
 ```sh
 cat teams.json | buddy
-``` 
+```
 
 ## Development
 
