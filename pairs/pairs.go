@@ -20,8 +20,11 @@ func GeneratePairs(src []string) [][]string {
 }
 
 // Shuffle shuffles an array.
-// It takes the src array and an integer to initialize a randomized source seed.
-// The seed can be something like `time.Now().UnixNano()`
+//
+// src is the source array that is gonna be shuffled, a copy is made.
+//
+// seed is an integer to initialize a randomized source. The seed can be
+// something like time.Now().UnixNano()
 func Shuffle(src []string, seed int64) []string {
 	r := rand.New(rand.NewSource(seed))
 

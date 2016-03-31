@@ -1,7 +1,25 @@
 language: go
 sudo: false
-go:
-  - 1.6
 
-test:
-  go test ./...
+go:
+- 1.6
+
+script:
+  - go test -v ./...
+  - go vet ./...
+  - find . -type f -name '*.go' -not -path "./vendor/*" | xargs gofmt -l
+
+after_success:
+  # If release then crosscompile
+  - if [ -n "$TRAVIS_TAG" ]; go get github.com/mitchellh/gox; gox -os="linux darwin windows"  -arch="amd64" ./cmd/buddy; else echo "Skipping release build..."; fi
+deploy:
+  provider: releases
+  api_key:
+    secure: il7iFlP5nSQDAP0e2RSraqGZnQkMYArrMKaVTi93IASn/s093KkZUUOJFW6mcs0vw1Aq8WfT7z+FAwOvv2vJ/p0THiXsbMW2DVHWuQ6cttagoHJ1Qu8a2pD02Bo+suxkAoO218lONip8NS+M4E37OivmNnTtBVhIlEXsL65zh02AKz2lIlbwT/brTWwP1hLLm/D5NXOhybpgcQde4VUcYKv7rmvRPNmc3V08tU8133wMsTKh4zN46AOJS2GtYqpWkCW8AozXw2r1zsaoWrUjqN0UMJMFQOzJDmJhhLmwstRz7Rn3jvc+u65sKI7R+VeZAwZYPPikzaXDPX1ZS/yn/67ZBN0mWWT5ye+hZOXzp0cZUIw4jeEnc3gP8eYqlJfEV4kZ6Gququ/4YvUCYLn4Umn+Z3e/5kOa+fbMAz45HXMVhcKHzUHj/zz/zbrakdkOQvWjQIVnYPmLFWp/pmjmwsOsryF9KKt/wc9nTp4Ju9pP3Hpva/0GkIZBGALJ/i0a0qbBduLbthM//Sw/y8lkuFIeqNUfWD+Fz77tPdFQ8EFB9YyQwQBk88JwHLIQS73oHsM0Va32Z7AkysGEXLaeVsO5MXqxBwIRSwYKeOjK15M7fMJB5f56RpSv1EpmO9ypiEDH2g4rBejnPVlnDHaTqIfotwsVsHf0XOw9zGgKyu0=
+  file:
+    - "buddy_darwin_amd64"
+    - "buddy_linux_amd64"
+    - "buddy_windows_amd64.exe"
+  skip_cleanup: true
+  on:
+    repo: pastjean/codebuddy
