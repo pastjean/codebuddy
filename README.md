@@ -1,4 +1,4 @@
-# codebuddy
+![Logo](assets/banner.png)
 
 [![Build Status](https://travis-ci.org/pastjean/codebuddy.svg?branch=master)](https://travis-ci.org/pastjean/codebuddy)
 [![GoDoc](http://godoc.org/github.com/pastjean/codebuddy?status.svg)](http://godoc.org/github.com/pastjean/codebuddy)
@@ -27,3 +27,7 @@ go build ./cmd/buddy
 
 cat teams.json | ./buddy
 ```
+
+## todo
+
+gometalinter
