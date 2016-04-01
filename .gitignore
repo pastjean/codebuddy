@@ -1,1 +1,6 @@
 .DS_Store
+
+# Generated binaries
+buddy_darwin_amd64
+buddy_linux_amd64
+buddy_windows_amd64
