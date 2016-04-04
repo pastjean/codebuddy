@@ -8,11 +8,12 @@ import (
 	"strings"
 	"time"
 
+	"github.com/pastjean/codebuddy/models"
 	"github.com/pastjean/codebuddy/pairs"
 )
 
 func main() {
-	teams := pairs.Teams{}
+	teams := models.TeamsMap{}
 	err := json.NewDecoder(os.Stdin).Decode(&teams)
 	if err != nil {
 		log.Fatal(err)

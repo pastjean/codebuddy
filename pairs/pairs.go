@@ -11,7 +11,9 @@ func GeneratePairs(src []string) [][]string {
 	for i := 0; i < len(src)/2; i++ {
 		pairs[i] = []string{src[i*2], src[i*2+1]}
 	}
-	// We're gonna generate a triple for the last pair
+
+	// We're gonna generate a triple for the last group
+	// if the array has a odd number of events
 	if len(src)%2 == 1 {
 		pairs[len(pairs)-1] = append(pairs[len(pairs)-1], src[len(src)-1])
 	}
