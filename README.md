@@ -27,4 +27,5 @@ go build ./cmd/buddy
 
 cat teams.json | ./buddy
 ```
-<div style="text-align:center;"><img src="assets/icon_api.png"/></div>
+
+<p align="center"><img src="assets/icon_api.png"/></p>
