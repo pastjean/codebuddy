@@ -8,7 +8,7 @@ import (
 
 func TestTeams(t *testing.T) {
 	src := []byte("{\"Avenger\":[\"Ironman\",\"Batman\"],\"Parliment\":[\"Harper\",\"Trudeau\"]}")
-	teams := &Teams{}
+	teams := &TeamsMap{}
 	err := json.Unmarshal(src, teams)
 	if err != nil {
 		t.Error(err)
