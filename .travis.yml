@@ -6,26 +6,26 @@ go:
 
 install:
   - go get -u ./...
-  - go get -u github.com/alecthomas/gometalinter
-  - gometalinter --install --update
+#  - go get -u github.com/alecthomas/gometalinter
+#  - gometalinter --install --update
 
 script:
-  - >
-    gometalinter --disable-all
-                 --enable=vet
-                 --enable=vetshadow
-                 --enable=golint
-                 --enable=ifnefassign
-                 --enable=goconst
-                 --enable=gotype
-                 --enable=deadcode
-                 --enable=gocyclo
-                 --enable=testify
-                 --enable=goimports
-                 --enable=gocyclo
-                 --enable=dupl
-                 --vendor 
-                 --tests  ./...
+#  - >
+#    gometalinter --disable-all
+#                 --enable=vet
+#                 --enable=vetshadow
+#                 --enable=golint
+#                 --enable=ifnefassign
+#                 --enable=goconst
+#                 --enable=gotype
+#                 --enable=deadcode
+#                 --enable=gocyclo
+#                 --enable=testify
+#                 --enable=goimports
+#                 --enable=gocyclo
+#                 --enable=dupl
+#                 --vendor 
+#                 --tests  ./...
   - go test -v ./...
   - find . -type f -name '*.go' -not -path "./vendor/*" | xargs gofmt -l
 
